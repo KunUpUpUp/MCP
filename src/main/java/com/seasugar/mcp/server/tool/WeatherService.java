@@ -6,6 +6,7 @@ import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.tool.annotation.Tool;
+import org.springframework.ai.tool.annotation.ToolParam;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +20,17 @@ public class WeatherService {
     @Value("${API-KEY}")
     private String apiKey;
 
+    /**
+     * 根据经纬度获取天气预报
+     *
+     * @param longitude 经度，东经为正数，西经为负数
+     * @param latitude  纬度，北纬为正数，南纬为负数
+     * @return 天气预报信息字符串
+     */
     @Tool(description = "根据经纬度获取天气预报")
     public String getWeatherForecastByLocation(
-            double longitude,
-            double latitude) {
+            @ToolParam(description = "经度，东经为正数，西经为负数") double longitude,
+            @ToolParam(description = "纬度，北纬为正数，南纬为负数") double latitude) {
         double[] location = new double[2];
         location[0] = longitude;
         location[1] = latitude;
