@@ -1,0 +1,10 @@
+# Using spring-ai-starter-mcp-server-webmvc
+spring:
+  ai:
+    mcp:
+      server:
+        name: webmvc-mcp-server
+        version: 1.0.0
+        type: SYNC
+
+API-KEY: 595c964ef80c1a497461f4684297b432
